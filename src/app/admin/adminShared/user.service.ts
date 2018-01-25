@@ -16,10 +16,10 @@ export class UserService implements CanActivate {
     constructor(private router: Router) {
         firebase.initializeApp({
             apiKey: "API Key Goes Here",
-    	    authDomain: "Auth Domain Goes Here",
+            authDomain: "Auth Domain Goes Here",
             databaseURL: "Database URL goes here",
             storageBucket: "Storage bucket info goes here",
-            messagingSenderId: "Message Sender ID goaes here"
+            messagingSenderId: "Message Sender ID goes here"
         })
     }
 
@@ -37,7 +37,7 @@ export class UserService implements CanActivate {
 
     register(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .catch(function(error) {
+            .catch(function (error) {
                 alert(`${error.message} Please try again!`);
             });
     }
@@ -56,16 +56,16 @@ export class UserService implements CanActivate {
 
     login(loginEmail: string, loginPassword: string) {
         firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
-            .catch(function(error){
+            .catch(function (error) {
                 alert(`${error.message} Unable to login. Please try again!`);
-        });
+            });
     }
 
-    logout(){
+    logout() {
         this.userLoggedIn = false;
-        firebase.auth().signOut().then(function() {
+        firebase.auth().signOut().then(function () {
             alert(`Logged Out!`);
-        }, function(error) {
+        }, function (error) {
             alert(`${error.message} Unable to logout. Try again!`);
         });
     }
